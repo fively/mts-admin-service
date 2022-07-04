@@ -1,8 +1,8 @@
-# mts-admin-service
-My Tools Admin Service
+# My Tools Admin Service
+Nest学习之旅
 
 ## Description
-
+Nest学习之旅，个人学习项目，基于 Nestjs、 Fastify、 knex、 mysql等进行开发
 
 ## Installation
 
@@ -39,7 +39,7 @@ $ npm run test:cov
 ## Support
 
 
-## Stay in touch
+## Reference
 
 ## License
 
