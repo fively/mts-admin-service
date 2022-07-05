@@ -41,6 +41,10 @@ $ npm run test:cov
 
 ## Reference
 
+Nestjs:  https://docs.nestjs.com/      
+knex:  http://knexjs.org/      
+Knex插件:  https://github.com/svtslv/nestjs-knex       
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
