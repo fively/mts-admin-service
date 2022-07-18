@@ -1,10 +1,8 @@
 import * as dotenv from 'dotenv';
 import { Module } from '@nestjs/common';
 import { ConfigService, ConfigModule } from '@nestjs/config';
-import dbConfig from '@/config/db.config';
-import appConfig from '@/config/app.config';
-
-import * as Joi from '@hapi/joi';
+import configs from '@/config';
+import { configValidationSchema } from '@/config.schema';
 
 /* 数据库连接模块 */
 import { KnexModule } from './db';
@@ -20,15 +18,8 @@ dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [dbConfig, appConfig],
-      validationSchema: Joi.object({
-        DB_TYPE: Joi.required(),
-        DB_HOST: Joi.required(),
-        DB_USERNAME: Joi.required(),
-        DB_PASSWORD: Joi.required(),
-        DB_DATABASE: Joi.required(),
-        DB_PORT: Joi.number().default(3306)
-      })
+      load: configs,
+      validationSchema: configValidationSchema
     }),
     KnexModule.forRootAsync({
       imports: [ConfigModule],
