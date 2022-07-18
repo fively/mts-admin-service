@@ -1,7 +1,14 @@
-import { Module } from '@nestjs/common';
-
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { LoggingMiddleware } from './middleware/logging.middleware';
 /**
  * 公共逻辑模块
  */
-@Module({})
-export class CommonModule {}
+@Module({
+  imports: [ConfigModule]
+})
+export class CommonModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggingMiddleware).forRoutes('*');
+  }
+}
